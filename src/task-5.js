@@ -1,16 +1,21 @@
-function getExpeditionsTargets(commandSeries) {
-    // Change me!
+import boundingRect from "./task-3";
+import runRover from "./task-4";
 
-    return [];
+// 5.1 Напишите вспомогательную функцию getExpeditionsTargets, которая принимает массив из нескольких серий серий команд марсохода.
+// Каждая из серий команд подчиняется в точности тем же правилам что и в задаче 4, и для каждой серии команд движение марсохода
+// начинается в точке 0, 0, как и в предыдущей задаче. Эта функция должна вернуть массив конечных координат марсохода для каждой из
+// серий передвижений.
+
+function getExpeditionsTargets(commandSeries) {
+  return commandSeries.map((el) => {
+    return runRover(el);
+  });
 }
 
-export default function boundingRover(commandSeries) {
-    // Change me!
+// 5.2 Напишите функцию boundingRover, которая принимает несколько серий передвижений марсохода, и возвращает минимальный
+// ограничивающий прямоугольник для конечных точек, в которых окажется марсоход в результате выполнения каждой из серий команд.
+//  Ответ нужно предоставить в том же формате, что и в задаче 3:
 
-    return {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-    };
+export default function boundingRover(commandSeries) {
+  return boundingRect(getExpeditionsTargets(commandSeries));
 }
